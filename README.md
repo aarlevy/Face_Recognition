@@ -1,68 +1,73 @@
-# Face Recognition System
+# Face Recognition Attendance System
 
-A simple and efficient face recognition system built with Python. This system can recognize faces in real-time using your webcam and match them against a database of known faces.
+A modern face recognition attendance system using deep learning, suitable for schools and businesses. The system uses the VGG-Face model for face recognition and maintains an attendance log in CSV format.
 
 ## Features
 
-- Real-time face detection and recognition
-- Support for multiple image formats (JPG, JPEG, PNG, HEIC)
-- Confidence score display
-- Detailed logging
-- Easy to use interface
+- Real-time face recognition using webcam
+- Multiple face detection and recognition
+- Attendance logging with timestamp
+- Support for multiple people
+- CSV-based attendance records
+- High accuracy using deep learning
+- User-friendly interface
 
-## Requirements
+## Setup
 
-```bash
-opencv-python
-numpy
-face_recognition
-Pillow
-```
-
-## Installation
-
-1. Clone this repository:
-```bash
-git clone https://github.com/aarlevy/Face_Recognition.git
-cd Face_Recognition
-```
-
+1. Make sure you have Python 3.8+ installed
 2. Install the required packages:
-```bash
-pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Directory Structure
+
+Place reference face images in the `Ref-Faces` directory with the following structure:
+```
+Ref-Faces/
+├── Person1_Name/
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   └── ...
+├── Person2_Name/
+│   ├── image1.jpg
+│   └── ...
+└── ...
 ```
 
 ## Usage
 
-1. Create a directory called `Faces` in the project root
-2. Inside `Faces`, create a subdirectory for each person you want to recognize
-3. Add photos of each person to their respective directories
-4. Run the program:
-```bash
-python face_recognition.py
-```
+1. Add reference faces:
+   - Create a folder with the person's name under `Ref-Faces`
+   - Add 2-3 clear face photos of the person in their folder
+   - Photos should show the face clearly without obstruction
 
-## Directory Structure
+2. Run the system:
+   ```bash
+   python attendance_system.py
+   ```
 
-```
-Face_Recognition/
-│
-├── face_recognition.py    # Main program
-├── Faces/                 # Directory containing face database
-│   ├── Person1/          # Directory for first person
-│   │   ├── photo1.jpg
-│   │   └── photo2.jpg
-│   └── Person2/          # Directory for second person
-│       ├── photo1.jpg
-│       └── photo2.jpg
-└── requirements.txt       # Package dependencies
-```
+3. The system will:
+   - Load and register all faces from the `Ref-Faces` directory
+   - Start the webcam for real-time recognition
+   - Record attendance in `attendance_log.csv`
+
+4. Press 'q' to quit the program
+
+## Attendance Log
+
+The system creates an `attendance_log.csv` file with the following information:
+- Name
+- Date
+- Time
+- Status
 
 ## Notes
 
-- For best results, use clear, well-lit photos for the face database
-- The system uses a confidence threshold of 0.5 for recognition
-- Press 'q' to quit the program while running
+- Ensure good lighting for better recognition
+- Face should be clearly visible to the camera
+- Multiple people can be recognized simultaneously
+- Each person's attendance is logged only once per day
 
 ## License
 
